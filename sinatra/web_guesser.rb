@@ -38,20 +38,26 @@ def check_guess(guess, number)
 	message
 end
 
+cheat = false
+
 
 get '/' do
-	puts @@guesses
 	guess = params["guess"]
+	if params["cheat"]
+		cheat = true
+	end
 	message = check_guess(guess, number)
 	if @@guesses == 0
 		number = rand(100)
 		@@guesses = 5
 		message = "You've lost, the number has been reset."
+		cheat = false
 	elsif message == "You got it right!"
 		number = rand(100)
 		@@guesses = 5
+		cheat = false
 		message = "You got it right! Number has been reset."
 	end
-	erb :index, :locals => {:number => number, :message => message}
+	erb :index, :locals => {:number => number, :message => message, :cheat => cheat}
 end
 

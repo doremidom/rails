@@ -22,7 +22,7 @@
   	<%= message %>
 
     <p>
-    <% if message == "You got it right!" %>
+    <% if message == "You got it right! Number has been reset." || cheat == true %>
       The SECRET NUMBER is <%= number %>
     <%end%>
     </p>

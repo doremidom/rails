@@ -47,6 +47,7 @@ get '/' do
 		cheat = true
 	end
 	message = check_guess(guess, number)
+	
 	if @@guesses == 0
 		number = rand(100)
 		@@guesses = 5
